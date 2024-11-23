@@ -3473,13 +3473,13 @@ html.pixel-ratio-3 .modal-inner:after {
 }
 .modal-button {
   width: 100%;
-  padding: 0 0px;
+  padding: 0 5px;
   height: 44px;
   font-size: 17px;
   line-height: 44px;
   text-align: center;
   color: #007aff;
-  background: #777777;
+  background: #e8e8e8;
   display: block;
   position: relative;
   white-space: nowrap;
@@ -3741,13 +3741,13 @@ input.modal-text-input + input.modal-text-input {
 }
 .popover {
   width: 320px;
-  background: rgba(119, 119, 119, 1.000);
+  background: rgba(255, 255, 255, 0.95);
   z-index: 11000;
   margin: 0;
   top: 0;
   opacity: 0;
   left: 0;
-  border-radius: 7px 7px 0 0;
+  border-radius: 7px;
   position: absolute;
   display: none;
   -webkit-transform: none;
