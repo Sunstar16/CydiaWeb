@@ -9014,7 +9014,8 @@
             }
         }
 
-
+        $("#x").hide();
+        var x = 0;
         
 function scroller() {
             console.log(x);
@@ -9022,6 +9023,9 @@ function scroller() {
             if (x == 15) {
                 $("#x").hide();
 
+            }
+                if (x == 0) {
+                $("#x").hide();
             }
             if (x == 20) {
                 $("#home").show();
