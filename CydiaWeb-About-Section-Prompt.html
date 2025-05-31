@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS System Prompt Example</title>
+  <style>
+    /* iOS-style modal with animations */
+    #terms-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      transition: background-color 0.1s ease-out;
+    }
+    
+    #terms-modal.showing {
+      background-color: rgba(0,0,0,0.2);
+    }
+    
+    .ios-alert {
+      width: 270px;
+      background-color: rgba(248,248,248,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 13px;
+      overflow: hidden;
+      text-align: center;
+      transform: scale(1.05);
+      opacity: 0;
+      transition: all 0.2s ease-out;
+    }
+    
+    #terms-modal.showing .ios-alert {
+      transform: scale(1);
+      opacity: 1;
+    }
+    
+    .ios-alert-title {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 15px 15px 5px;
+      margin: 0;
+      color: #000;
+    }
+    
+    .ios-alert-message {
+      font-size: 13px;
+      padding: 0 15px 15px;
+      margin: 0;
+      color: #000;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+    
+    .ios-alert-buttons {
+      display: flex;
+      border-top: 0.5px solid rgba(0,0,0,0.1);
+    }
+    
+    .ios-alert-button {
+      flex: 1;
+      padding: 12px;
+      font-size: 17px;
+      font-weight: 400;
+      color: #007AFF;
+      background: none;
+      border: none;
+      border-right: 0.5px solid rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    
+    .ios-alert-button:last-child {
+      border-right: none;
+      font-weight: 600;
+    }
+    
+    .ios-alert-button:active {
+      background-color: rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Website</h1>
+  <p>Content of the website goes here.</p>
+  <button id="show-terms-btn">About</button>
+
+  <!-- iOS-style alert with animations -->
+  <div id="terms-modal">
+    <div class="ios-alert">
+      <h2 class="ios-alert-title"> ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎About CydiaWeb‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎ Installer</h2>
+      <p class="ios-alert-message"> ‎ Copyright © 2008-2015
+SaurikIT,LLC
+
+Jay Freeman (@saurik)
+Luis (@Sunstar_16)
+http://www.saurik.com/</p>
+      <div class="ios-alert-buttons">
+        <button class="ios-alert-button" id="accept-terms">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show terms with animation
+    document.getElementById('show-terms-btn').addEventListener('click', () => {
+      const modal = document.getElementById('terms-modal');
+      modal.style.display = 'flex';
+      
+      // Trigger animation in the next frame
+      setTimeout(() => {
+        modal.classList.add('showing');
+      }, 10);
+    });
+
+    // Handle terms acceptance with animation
+    document.getElementById('accept-terms').addEventListener('click', () => {
+      const modal = document.getElementById('terms-modal');
+      modal.classList.remove('showing');
+      
+      // Wait for animation to complete before hiding
+      setTimeout(() => {
+        modal.style.display = 'none';
+        localStorage.setItem('termsAccepted', 'true');
+        console.log("Terms accepted, saved to localStorage.");
+      }, 200);
+    });
+  </script>
+</body>
+</html>
